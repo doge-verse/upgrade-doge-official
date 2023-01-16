@@ -10,27 +10,29 @@
         <div class="menu">
           <div class="home">HOME</div>
           <div class="tools">
-            <Tooltip
-              placement="bottom"
-            >
-              TOOLS
-              <div slot="content">
-                <div class="selectBox" @click="toTools(0)">
-                  <div class="imgBox">
-                    <img src="@/static/network.svg" class="no_ac network" alt="">
-                    <img src="@/static/network_ac.svg" class="ac network" alt="">
+            <client-only>
+              <Tooltip
+                placement="bottom"
+              >
+                TOOLS
+                <div slot="content">
+                  <div class="selectBox" @click="toTools(0)">
+                    <div class="imgBox">
+                      <img src="@/static/network.png" class="no_ac network" alt="">
+                      <img src="@/static/network_ac.png" class="ac network" alt="">
+                    </div>
+                    Network files parser
                   </div>
-                  Network files parser
-                </div>
-                <div class="selectBox" @click="toTools(1)">
-                  <div class="imgBox">
-                    <img src="@/static/notifier.svg" class="no_ac notifier" alt="">
-                    <img src="@/static/notifier_ac.svg" class="ac notifier" alt="">
+                  <div class="selectBox" @click="toTools(1)">
+                    <div class="imgBox">
+                      <img src="@/static/notifier.png" class="no_ac notifier" alt="">
+                      <img src="@/static/notifier_ac.png" class="ac notifier" alt="">
+                    </div>
+                    Notifier Service
                   </div>
-                  Notifier Service
                 </div>
-              </div>
-            </Tooltip>
+              </Tooltip>
+            </client-only>
           </div>
           <div class="docs" @click="toDocs">DOCS</div>
         </div>
@@ -79,13 +81,13 @@
         <div class="contentBox">
           <div class="selectBox">
             <div class="network" :class="{ac: toolsSelected == 0}" @click="selectTools(0)">
-              <img src="@/static/network.svg" v-if="toolsSelected != 0" class="networkImg" alt="">
-              <img src="@/static/network_ac.svg" v-if="toolsSelected == 0" class="networkImg" alt="">
+              <img src="@/static/network.png" v-if="toolsSelected != 0" class="networkImg" alt="">
+              <img src="@/static/network_ac.png" v-if="toolsSelected == 0" class="networkImg" alt="">
               Network files parser
             </div>
             <div class="notifier" :class="{ac: toolsSelected == 1}" @click="selectTools(1)">
-              <img src="@/static/notifier.svg" v-if="toolsSelected != 1" class="notifierImg" alt="">
-              <img src="@/static/notifier_ac.svg" v-if="toolsSelected == 1" class="notifierImg" alt="">
+              <img src="@/static/notifier.png" v-if="toolsSelected != 1" class="notifierImg" alt="">
+              <img src="@/static/notifier_ac.png" v-if="toolsSelected == 1" class="notifierImg" alt="">
               Notifier Service
             </div>
           </div>
@@ -198,8 +200,6 @@ export default {
   },
   methods: {
     carouselArrow(flag) {
-      console.log(flag, this.curCarouselNum);
-      
       switch (flag) {
           case 'last':
             if (this.curCarouselNum == 0) {

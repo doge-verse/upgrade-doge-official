@@ -1,4 +1,6 @@
 export default {
+  mode: 'universal',
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Upgrade-Doge',
@@ -56,5 +58,30 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    postcss: {
+      preset: {
+        autoprefixer: true,
+      },
+    },
+
+    analyze: false, //打包文件分析  ,使用npm run build后弹出页面
+
+    //按需引入
+    babel: {
+      plugins: [
+        [
+          "import",
+          {
+            libraryName: "view-design",
+            libraryDirectory: "src/components",
+          },
+        ],
+      ],
+    },
+
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {},
   }
 }
